@@ -1,0 +1,38 @@
+﻿
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/af-2.2.2/b-1.4.2/b-colvis-1.4.2/b-flash-1.4.2/b-html5-1.4.2/datatables.min.css" />*@
+@*<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />*@
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#firstTab" onclick="refreshAddNewTab('@Url.Action("AddOrEdit", "Employee", new {id=0})', true)">View All</a></li>
+    <li class="active"><a data-toggle="tab" href="#secondTab">Add New</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="firstTab" class="tab-pane fade in">@Html.Action("ViewAll")</div>  
+    <div id="secondTab" class="tab-pane fade in active">@Html.Action("AddOrEdit")</div>  
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+@*<script src="~/Scripts/DataTables/dataTables.jqueryui.min.js"></script>*@
+@*<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>*@
+<script src="~/Scripts/datatables.min.js"></script>
+    <script>
+        function activatejQueryTable()
+        {
+            $("#employeeTable").DataTable();
+        }
+
+        $(function () {
+            activatejQueryTable();
+        });
+    </script>
+    }
+
+
